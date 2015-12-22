@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Reflection;
 using System.Windows.Forms;
 using WatchDog;
+using System.Data;
 
 namespace WatchDog_testAp
     {
@@ -384,7 +385,16 @@ namespace WatchDog_testAp
             tstLog.WriteLine("Test " + cntTest.ToString() + ": Get Process Property");
             tstLog.WriteLine(strLine);
             cntTest++;
-            //Test 37: Get Process Properties*
+            //Test xx: Get Process Properties*
+            DataTable rsDT = Rover.GetProcessProperties(tstPROCESSID.ToString());
+            tstLog.WriteLine("Test " + cntTest.ToString() + ": Get Process Properties");
+
+            for (int i = 0; i < rsDT.Rows.Count; i++)
+                {
+                DataRow dr = rsDT.Rows[i];
+                tstLog.WriteLine("Record Number ->" + i.ToString() + " PROCESS_ID -> " + dr["PROCESS_ID"].ToString() + " PROPERTY_NM -> " + dr["PROPERTY_NM"].ToString() + " PROPERTY_VALUE -> " + dr["PROPERTY_VALUE"].ToString() + " PROPERTY_VALUE_TYP -> " + dr["PROPERTY_VALUE_TYP"].ToString() + " ENABLE_IND -> " + dr["ENABLE_IND"].ToString() + " UPDATE_DTTM ->" + (DateTime)dr["UPDATE_DTTM"] + " UPDATE_UID -> " + dr["UPDATE_UID"].ToString());
+                }
+            cntTest++;
             //Test 37: Disable Process Property
             int resTest40 = 0;
             resTest40=Rover.DisableProcessProperty(tstPROCESSID.ToString(), tstPROPERTYNM.ToString(),tstTESTERID.ToString());
