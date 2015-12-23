@@ -388,14 +388,14 @@ namespace WatchDog_testAp
             //Test xx: Get Process Properties
             int resTest39 = 0;
             int resCntr = 1;
-            string strPropName1 = "Home Directory";
-            string strPropValue1 = "C:\\WatchDog\\Home";
-            string strPropName2 = "Default Directory";
-            string strPropValue2 = "C:\\WatchDog";
-            string strPropName3 = "Log File Directory";
-            string strPropValue3 = "C:\\WatchDog\\Logs";
-            string strPropName4 = "Error File Directory";
-            string strPropValue4 = "C:\\WatchDog\\Errors";
+            string strPropName1 = "Home Directory ";
+            string strPropValue1 = "C:\\WatchDog\\Home ";
+            string strPropName2 = "Default Directory ";
+            string strPropValue2 = "C:\\WatchDog ";
+            string strPropName3 = "Log File Directory ";
+            string strPropValue3 = "C:\\WatchDog\\Logs ";
+            string strPropName4 = "Error File Directory ";
+            string strPropValue4 = "C:\\WatchDog\\Errors ";
             resTest39 = Rover.DefineProcessProperty(tstPROCESSID.ToString(), strPropName1.ToString(), strPropValue1.ToString(), tstPROPERTYVALUETYP.ToString(), tstTESTERID.ToString());
             resCntr++;
             resTest39 = Rover.DefineProcessProperty(tstPROCESSID.ToString(), strPropName2.ToString(), strPropValue2.ToString(), tstPROPERTYVALUETYP.ToString(), tstTESTERID.ToString());
