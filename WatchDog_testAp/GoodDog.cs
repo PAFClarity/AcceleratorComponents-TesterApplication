@@ -385,11 +385,30 @@ namespace WatchDog_testAp
             tstLog.WriteLine("Test " + cntTest.ToString() + ": Get Process Property");
             tstLog.WriteLine(strLine);
             cntTest++;
-            //Test xx: Get Process Properties*
+            //Test xx: Get Process Properties
+            int resTest39 = 0;
+            int resCntr = 1;
+            string strPropName1 = "Home Directory";
+            string strPropValue1 = "C:\\WatchDog\\Home";
+            string strPropName2 = "Default Directory";
+            string strPropValue2 = "C:\\WatchDog";
+            string strPropName3 = "Log File Directory";
+            string strPropValue3 = "C:\\WatchDog\\Logs";
+            string strPropName4 = "Error File Directory";
+            string strPropValue4 = "C:\\WatchDog\\Errors";
+            resTest39 = Rover.DefineProcessProperty(tstPROCESSID.ToString(), strPropName1.ToString(), strPropValue1.ToString(), tstPROPERTYVALUETYP.ToString(), tstTESTERID.ToString());
+            resCntr++;
+            resTest39 = Rover.DefineProcessProperty(tstPROCESSID.ToString(), strPropName2.ToString(), strPropValue2.ToString(), tstPROPERTYVALUETYP.ToString(), tstTESTERID.ToString());
+            resCntr++;
+            resTest39 = Rover.DefineProcessProperty(tstPROCESSID.ToString(), strPropName3.ToString(), strPropValue3.ToString(), tstPROPERTYVALUETYP.ToString(), tstTESTERID.ToString());
+            resCntr++;
+            resTest39 = Rover.DefineProcessProperty(tstPROCESSID.ToString(), strPropName4.ToString(), strPropValue4.ToString(), tstPROPERTYVALUETYP.ToString(), tstTESTERID.ToString());
+            resCntr++;
             DataTable rsDT = Rover.GetProcessProperties(tstPROCESSID.ToString());
             tstLog.WriteLine("Test " + cntTest.ToString() + ": Get Process Properties");
-
-            for (int i = 0; i < rsDT.Rows.Count; i++)
+            tstLog.WriteLine("                  :Step 1 -> Add additional Properties to "+ tstPROCESSID.ToString()+" for a total of "+resCntr.ToString()+" records.");
+            tstLog.WriteLine("                  :Step 2 -> Output Records ->");
+                for (int i = 0; i < rsDT.Rows.Count; i++)
                 {
                 DataRow dr = rsDT.Rows[i];
                 tstLog.WriteLine("Record Number ->" + i.ToString() + " PROCESS_ID -> " + dr["PROCESS_ID"].ToString() + " PROPERTY_NM -> " + dr["PROPERTY_NM"].ToString() + " PROPERTY_VALUE -> " + dr["PROPERTY_VALUE"].ToString() + " PROPERTY_VALUE_TYP -> " + dr["PROPERTY_VALUE_TYP"].ToString() + " ENABLE_IND -> " + dr["ENABLE_IND"].ToString() + " UPDATE_DTTM ->" + (DateTime)dr["UPDATE_DTTM"] + " UPDATE_UID -> " + dr["UPDATE_UID"].ToString());
